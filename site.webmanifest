@@ -1,0 +1,22 @@
+{
+  "name": "iFrozen Food Nusantara",
+  "short_name": "iFrozen Food",
+  "description": "Peluang Usaha Kemitraan Frozen Food UMKM Resmi & Terpercaya",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "assets/images/01-s1600-logo-new.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "assets/images/01-s1600-logo-new.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}
