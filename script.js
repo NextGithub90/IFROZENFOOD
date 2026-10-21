@@ -114,36 +114,30 @@ const terms = [
 ];
 
 const testimonials = [
-  ["26-s600-t1.webp", "Mitra Sukses - Surabaya"],
-  ["27-s600-t2.webp", "Mitra Sukses - Badung"],
-  ["28-s600-t3.webp", "Mitra Sukses - Garut"],
-  ["29-s600-t4.webp", "Mitra Sukses - Depok"],
-  ["30-s600-t5.webp", "Mitra Sukses - Banjarmasin"],
-  ["31-s600-t6.webp", "Mitra Sukses - Sembiran"],
-  ["32-s600-t7.webp", "Mitra Sukses - Bangkinang"],
-  ["33-s600-t8.webp", "Mitra Sukses - Depok"],
-  ["34-s600-t9.webp", "Mitra Sukses - Parepare"],
-  ["35-s600-t10.webp", "Mitra Sukses - Lampung"],
-  ["36-s1600-t1.webp", "Mitra Sukses - Depok"],
-  ["37-s1600-t2.webp", "Mitra Sukses - Madiun"],
-  ["38-s1600-t3.webp", "Mitra Sukses - Garut"],
-  ["39-s1600-t4.webp", "Mitra Sukses - Lampung"],
-  ["40-s1600-t5.webp", "Mitra Sukses - Purwakarta"],
-  ["41-s1600-t6.webp", "Mitra Sukses - Lebak"],
-  ["42-s1600-t7.webp", "Mitra Sukses - Kendari"],
-  ["43-s1600-t8.webp", "Mitra Sukses - Bontang"],
-  ["44-s1600-t9.webp", "Mitra Sukses - Bandung"],
-  ["45-s1600-t10.webp", "Mitra Sukses - Madiun"],
-  ["46-s1600-t11.webp", "Mitra Sukses - Salatiga"],
-  ["47-s1600-t12.webp", "Mitra Sukses - Banjarmasin"],
-  ["48-s1600-t13.webp", "Mitra Sukses - Denpasar"],
-  ["49-s1600-t14.webp", "Mitra Sukses - Bogorsero"],
-  ["50-s1600-t15.webp", "Mitra Sukses - Bogorsero"],
-  ["51-s1600-t16.webp", "Mitra Sukses - Bekasi"],
-  ["52-s1600-t17.webp", "Mitra Sukses - Tanjungbalai"],
-  ["53-s1600-t18.webp", "Mitra Sukses - Tanjungselor"],
-  ["54-s1600-t19.webp", "Mitra Sukses - Bangkinang"],
-  ["55-s1600-t20.webp", "Mitra Sukses - Pekanbaru"],
+  {
+    image: "testimonials/testimonial-maya-lestari.jpg",
+    label: "Mitra iFrozen - Bekasi",
+    quote: "Paketnya datang lengkap dan alurnya jelas. Saya bisa fokus melayani pelanggan, sementara tim iFrozen membantu saat waktunya restock dan mengembangkan penjualan.",
+    name: "Maya Lestari",
+    role: "Pemilik Frozen Berkah",
+    location: "Bekasi, Jawa Barat",
+  },
+  {
+    image: "testimonials/testimonial-rizal-pratama.jpg",
+    label: "Mitra iFrozen - Tangerang",
+    quote: "Yang paling terasa adalah saya tidak memulai sendirian. Pilihan produknya mudah dijual, perlengkapan usaha sudah siap, dan konsultasi tetap tersedia setelah toko berjalan.",
+    name: "Rizal Pratama",
+    role: "Pemilik Dapur Beku Mandiri",
+    location: "Tangerang, Banten",
+  },
+  {
+    image: "testimonials/testimonial-nadia-rahma.jpg",
+    label: "Mitra iFrozen - Bandung",
+    quote: "Dari paket awal sampai toko siap buka, prosesnya terasa praktis. Katalog produknya beragam sehingga saya lebih mudah menyesuaikan stok dengan kebutuhan pelanggan sekitar.",
+    name: "Nadia Rahma",
+    role: "Pemilik Rumah Frozen Nadia",
+    location: "Bandung, Jawa Barat",
+  },
 ];
 
 const notifications = [
@@ -245,13 +239,13 @@ app.innerHTML = `
             </div>
           </div>
           <div class="hero-visual glass-card">
-            <img src="${IMAGE_PATH}02-s1600-1.webp" alt="Kemitraan Official iFrozen Nusantara" />
+            <img src="${IMAGE_PATH}02-s1600-1.webp" alt="Kemitraan Official iFrozen Nusantara" fetchpriority="high" decoding="async" />
             <div class="visual-caption"><strong>RESMI & TERPERCAYA</strong><span>Mulai Bisnismu Dari Sekarang!</span></div>
           </div>
         </div>
         <div class="brand-showcase">
           <p>Menyediakan Produk Dari Brand Ternama</p>
-          <div class="glass-card brand-image"><img src="${IMAGE_PATH}04-s1600-2.webp" alt="Brand Partners: So Good, Champ, Fiesta, Belfoods, dll" /></div>
+          <div class="glass-card brand-image"><img src="${IMAGE_PATH}04-s1600-2.webp" alt="Brand Partners: So Good, Champ, Fiesta, Belfoods, dll" decoding="async" /></div>
         </div>
       </div>
     </section>
@@ -271,7 +265,7 @@ app.innerHTML = `
       <div class="container">
         <header class="section-heading"><h2>Peluang Bisnis Frozen Food</h2><span class="heading-line gradient"></span></header>
         <div class="about-grid">
-          <div class="about-picture glass-card"><img src="${IMAGE_PATH}06-s600-3.peluang.webp" alt="Apa Itu Frozen Food? Praktis, Tahan Lama" /></div>
+          <div class="about-picture glass-card"><img src="${IMAGE_PATH}06-s600-3.peluang.webp" alt="Apa Itu Frozen Food? Praktis, Tahan Lama" loading="lazy" decoding="async" /></div>
           <article class="glass-card about-copy">
             <h3>Praktis • Tahan Lama • Kebutuhan Harian</h3>
             <p>Frozen food bukan sekadar makanan beku. Ini adalah solusi bagi keluarga modern yang membutuhkan kepraktisan tanpa mengorbankan nutrisi. Dengan teknologi pembekuan cepat, kesegaran dan gizi terjaga lebih lama.</p>
@@ -306,13 +300,16 @@ app.innerHTML = `
           <p>Keuntungan grosir vs eceran yang nyata. Cek simulasi di bawah ini atau lihat katalog pricelist lengkap kami.</p>
         </header>
         <div class="glass-card table-card">
-          <div class="table-scroll"><table><thead><tr><th>Brand</th><th>Nama Produk</th><th>Harga Grosir (Modal)</th><th>Harga Eceran (Jual)</th><th>Profit/Pcs</th></tr></thead><tbody id="price-body"></tbody></table></div>
+          <div class="table-scroll-shell">
+            <div class="table-scroll" id="price-table-scroll" tabindex="0" aria-label="Tabel harga dapat digeser ke samping"><table><thead><tr><th>Brand</th><th>Nama Produk</th><th>Harga Grosir (Modal)</th><th>Harga Eceran (Jual)</th><th>Profit/Pcs</th></tr></thead><tbody id="price-body"></tbody></table></div>
+            <div class="table-swipe-hint" id="price-scroll-hint" aria-hidden="true"><span>Geser untuk lihat harga</span><img src="${ICON_PATH}chevron-right.svg" alt="" /></div>
+          </div>
           <p class="table-note">*Harga pada tabel adalah simulasi. Harga real mengikuti update pricelist pabrik terbaru di bawah ini.</p>
         </div>
         <header class="subheading"><h3>Katalog Pricelist Resmi</h3><p>Geser untuk melihat brand lain. Klik gambar untuk Zoom.</p></header>
         <div class="carousel price-carousel" data-carousel="price">
           <div class="glass-card carousel-card portrait-card">
-            <a id="price-zoom" target="_blank" rel="noreferrer"><img id="price-image" alt="Halaman 1" /></a>
+            <a id="price-zoom" target="_blank" rel="noreferrer"><img id="price-image" alt="Halaman 1" loading="lazy" decoding="async" /></a>
             <div class="carousel-caption"><strong id="price-title">Halaman 1</strong><span id="price-count">1 / 10</span></div>
           </div>
           <button class="carousel-arrow prev" type="button" data-price-dir="-1" aria-label="Previous Slide"><img src="${ICON_PATH}chevron-left.svg" alt="" /></button>
@@ -324,23 +321,22 @@ app.innerHTML = `
     <section class="flow section">
       <div class="container">
         <header class="section-heading"><h2>Alur Pendaftaran Mitra</h2><p>Proses cepat, transparan, dan resmi.</p></header>
-        <div class="glass-card flow-image"><img src="${IMAGE_PATH}25-s1600-21.webp" alt="Diagram Alur Pendaftaran" /></div>
+        <div class="glass-card flow-image"><img src="${IMAGE_PATH}25-s1600-21.webp" alt="Diagram Alur Pendaftaran" loading="lazy" decoding="async" /></div>
         <div class="step-grid" id="step-grid"></div>
         <div class="support-note glass-card">Semua proses ini didampingi langsung oleh <strong>Tim Marketing Resmi</strong> kami.</div>
       </div>
     </section>
 
-    <section class="testimonials section section-tint-soft">
+    <section class="testimonials section section-tint-soft" id="testimonials">
       <div class="container">
-        <header class="section-heading"><span class="eyebrow">Bukti Nyata</span><h2>Apa Kata Mitra Kami?</h2><p>Ratusan mitra telah bergabung dan membuktikan keuntungan bisnis ini.</p></header>
-        <div class="carousel testimonial-carousel" data-carousel="testimonials">
-          <div class="glass-card carousel-card testimonial-card">
-            <img id="testimonial-image" alt="Mitra Sukses - Surabaya" />
-            <div class="testimonial-caption" id="testimonial-caption">Mitra Sukses - Surabaya</div>
+        <header class="section-heading"><span class="eyebrow">Cerita Para Mitra</span><h2>Apa Kata Mitra Kami?</h2><p>Pengalaman nyata saat memulai dan menjalankan usaha bersama iFrozen Food Nusantara.</p></header>
+        <div class="story-slider" id="testimonial-slider" role="region" aria-roledescription="carousel" aria-label="Cerita mitra iFrozen" tabindex="0">
+          <div class="story-viewport">
+            <div class="story-track" id="testimonial-track" aria-live="polite"></div>
           </div>
-          <button class="carousel-arrow prev" type="button" data-testimonial-dir="-1" aria-label="Previous Testimonial"><img src="${ICON_PATH}chevron-left.svg" alt="" /></button>
-          <button class="carousel-arrow next" type="button" data-testimonial-dir="1" aria-label="Next Testimonial"><img src="${ICON_PATH}chevron-right.svg" alt="" /></button>
-          <div class="carousel-dots" id="testimonial-dots"></div>
+          <button class="story-arrow story-prev" type="button" data-testimonial-dir="-1" aria-label="Lihat testimoni sebelumnya"><img src="${ICON_PATH}chevron-left.svg" alt="" /></button>
+          <button class="story-arrow story-next" type="button" data-testimonial-dir="1" aria-label="Lihat testimoni berikutnya"><img src="${ICON_PATH}chevron-right.svg" alt="" /></button>
+          <div class="story-controls"><div class="carousel-dots" id="testimonial-dots"></div><span id="testimonial-count">01 / 03</span></div>
         </div>
       </div>
     </section>
@@ -371,7 +367,7 @@ app.innerHTML = `
         <header class="section-heading"><h2>Formulir Pendaftaran</h2><p>Daftar hari ini, diproses hari ini. Ambil kesempatan emas ini sekarang!</p></header>
         <div class="registration-layout">
           <aside class="registration-aside">
-            <div class="glass-card register-image"><img src="${IMAGE_PATH}56-s1600-22.webp" alt="Ayo Daftar Kemitraan iFrozen Food Indonesia" /></div>
+            <div class="glass-card register-image"><img src="${IMAGE_PATH}56-s1600-22.webp" alt="Ayo Daftar Kemitraan iFrozen Food Indonesia" loading="lazy" decoding="async" /></div>
             <div class="glass-card registration-map">
               <div class="map-copy"><span>Lokasi Resmi</span><h3>Kantor Administrasi</h3><p>Treasury Tower, District 8 SCBD, Jakarta Selatan.</p></div>
               <iframe title="Peta kantor administrasi iFrozen Food Nusantara" src="https://www.google.com/maps?q=Treasury%20Tower%20District%208%20SCBD%20Jakarta&output=embed" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -465,7 +461,7 @@ document.querySelector("#package-grid").innerHTML = packages.map((item) => `
   <article class="glass-card package-card ${item.popular ? "popular" : ""}" data-package="${item.id}">
     ${item.popular ? '<span class="popular-badge">★ BEST SELLER</span>' : ""}
     <button class="package-picture" type="button" data-open-flyer="${item.id}" title="Klik untuk memperbesar flyer">
-      <img src="${IMAGE_PATH}${item.image}" alt="Flyer ${item.name}" />
+      <img src="${IMAGE_PATH}${item.image}" alt="Flyer ${item.name}" loading="lazy" decoding="async" />
       <span class="zoom-label">🔍 Perbesar</span>
       <span class="package-title"><b>${item.name}</b><strong>${item.price}</strong></span>
     </button>
@@ -486,7 +482,9 @@ document.querySelector("#bank-select").insertAdjacentHTML("beforeend", banks.map
 
 const scrollToSection = (id) => {
   const section = document.getElementById(id);
-  if (section) section.scrollIntoView({ behavior: "smooth" });
+  if (!section) return;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  section.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
 };
 
 document.addEventListener("click", (event) => {
@@ -529,28 +527,57 @@ bottomMenuToggle.addEventListener("click", toggleMobileMenu);
 document.querySelectorAll("[data-close-menu]").forEach((button) => button.addEventListener("click", closeMobileMenu));
 
 const trackedSections = ["home", "about", "packages", "terms", "register", "feedback"];
-const updateActiveNav = () => {
-  const marker = window.scrollY + Math.min(window.innerHeight * 0.38, 280);
-  let activeId = "home";
-  trackedSections.forEach((id) => {
-    const section = document.getElementById(id);
-    if (section && section.offsetTop <= marker) activeId = id;
-  });
-  document.querySelectorAll("[data-bottom-nav]").forEach((button) => {
+const bottomNavButtons = document.querySelectorAll("[data-bottom-nav]");
+const desktopNavButtons = document.querySelectorAll(".desktop-nav [data-scroll]");
+let activeSection = "";
+
+const setActiveNav = (activeId) => {
+  if (activeId === activeSection) return;
+  activeSection = activeId;
+  bottomNavButtons.forEach((button) => {
     const active = button.dataset.bottomNav === activeId;
     button.classList.toggle("active", active);
     if (active) button.setAttribute("aria-current", "page");
     else button.removeAttribute("aria-current");
   });
-  document.querySelectorAll(".desktop-nav [data-scroll]").forEach((button) => button.classList.toggle("active", button.dataset.scroll === activeId));
+  desktopNavButtons.forEach((button) => button.classList.toggle("active", button.dataset.scroll === activeId));
 };
 
+setActiveNav("home");
+
+if ("IntersectionObserver" in window) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const current = entries.find((entry) => entry.isIntersecting);
+    if (current) setActiveNav(current.target.id);
+  }, { rootMargin: "-22% 0px -67% 0px", threshold: 0 });
+  trackedSections.forEach((id) => {
+    const section = document.getElementById(id);
+    if (section) sectionObserver.observe(section);
+  });
+}
+
+let navbarFrame = 0;
+let navbarScrolled = false;
 const updateNavbar = () => {
-  navbar.classList.toggle("scrolled", window.scrollY > 50);
-  updateActiveNav();
+  navbarFrame = 0;
+  const shouldBeScrolled = window.scrollY > 50;
+  if (shouldBeScrolled === navbarScrolled) return;
+  navbarScrolled = shouldBeScrolled;
+  navbar.classList.toggle("scrolled", navbarScrolled);
 };
-window.addEventListener("scroll", updateNavbar, { passive: true });
+const queueNavbarUpdate = () => {
+  if (!navbarFrame) navbarFrame = window.requestAnimationFrame(updateNavbar);
+};
+window.addEventListener("scroll", queueNavbarUpdate, { passive: true });
 updateNavbar();
+
+const priceTableScroll = document.querySelector("#price-table-scroll");
+const priceScrollHint = document.querySelector("#price-scroll-hint");
+const hidePriceScrollHint = () => priceScrollHint.classList.add("is-hidden");
+priceTableScroll.addEventListener("scroll", () => {
+  if (priceTableScroll.scrollLeft > 12) hidePriceScrollHint();
+}, { passive: true });
+priceTableScroll.addEventListener("pointerdown", hidePriceScrollHint, { once: true, passive: true });
 
 const flyerModal = document.querySelector("#flyer-modal");
 let activePackage = null;
@@ -618,26 +645,63 @@ document.querySelectorAll("[data-price-dir]").forEach((button) => button.addEven
 renderPriceSlide();
 
 let testimonialIndex = 0;
+const testimonialSlider = document.querySelector("#testimonial-slider");
+const testimonialTrack = document.querySelector("#testimonial-track");
 const dots = document.querySelector("#testimonial-dots");
+const testimonialCount = document.querySelector("#testimonial-count");
+
+testimonialTrack.innerHTML = testimonials.map((item, index) => `
+  <article class="story-slide" role="group" aria-roledescription="slide" aria-label="${index + 1} dari ${testimonials.length}" aria-hidden="${index === 0 ? "false" : "true"}">
+    <figure class="story-portrait">
+      <img src="${IMAGE_PATH}${item.image}" alt="Portrait ilustrasi ${item.name}" loading="lazy" decoding="async" />
+      <figcaption>Foto ilustrasi</figcaption>
+    </figure>
+    <div class="story-copy">
+      <span class="story-label">${item.label}</span>
+      <blockquote>“${item.quote}”</blockquote>
+      <div class="story-person"><strong>${item.name}</strong><span>${item.role}</span><small>${item.location}</small></div>
+    </div>
+  </article>
+`).join("");
 dots.innerHTML = testimonials.map((_, index) => `<button type="button" data-testimonial-index="${index}" aria-label="Lihat testimoni ${index + 1}"></button>`).join("");
+
 const renderTestimonial = () => {
-  const [imageName, name] = testimonials[testimonialIndex];
-  const image = document.querySelector("#testimonial-image");
-  image.src = `${IMAGE_PATH}${imageName}`;
-  image.alt = name;
-  document.querySelector("#testimonial-caption").textContent = name;
-  dots.querySelectorAll("button").forEach((dot, index) => dot.classList.toggle("active", index === testimonialIndex));
+  testimonialTrack.style.transform = `translate3d(-${testimonialIndex * 100}%, 0, 0)`;
+  testimonialTrack.querySelectorAll(".story-slide").forEach((slide, index) => slide.setAttribute("aria-hidden", String(index !== testimonialIndex)));
+  dots.querySelectorAll("button").forEach((dot, index) => {
+    const active = index === testimonialIndex;
+    dot.classList.toggle("active", active);
+    if (active) dot.setAttribute("aria-current", "true");
+    else dot.removeAttribute("aria-current");
+  });
+  testimonialCount.textContent = `${String(testimonialIndex + 1).padStart(2, "0")} / ${String(testimonials.length).padStart(2, "0")}`;
 };
-document.querySelectorAll("[data-testimonial-dir]").forEach((button) => button.addEventListener("click", () => {
-  testimonialIndex = (testimonialIndex + Number(button.dataset.testimonialDir) + testimonials.length) % testimonials.length;
+
+const showTestimonial = (index) => {
+  testimonialIndex = (index + testimonials.length) % testimonials.length;
   renderTestimonial();
-}));
+};
+
+document.querySelectorAll("[data-testimonial-dir]").forEach((button) => button.addEventListener("click", () => showTestimonial(testimonialIndex + Number(button.dataset.testimonialDir))));
 dots.addEventListener("click", (event) => {
   const dot = event.target.closest("[data-testimonial-index]");
   if (!dot) return;
-  testimonialIndex = Number(dot.dataset.testimonialIndex);
-  renderTestimonial();
+  showTestimonial(Number(dot.dataset.testimonialIndex));
 });
+
+testimonialSlider.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft") showTestimonial(testimonialIndex - 1);
+  if (event.key === "ArrowRight") showTestimonial(testimonialIndex + 1);
+});
+
+let testimonialTouchStart = 0;
+testimonialSlider.addEventListener("touchstart", (event) => {
+  testimonialTouchStart = event.changedTouches[0].clientX;
+}, { passive: true });
+testimonialSlider.addEventListener("touchend", (event) => {
+  const distance = event.changedTouches[0].clientX - testimonialTouchStart;
+  if (Math.abs(distance) > 48) showTestimonial(testimonialIndex + (distance < 0 ? 1 : -1));
+}, { passive: true });
 renderTestimonial();
 
 const bankSelect = document.querySelector("#bank-select");
@@ -771,9 +835,9 @@ document.addEventListener("keydown", (event) => {
     for (let i = 1; i <= 4; i++) {
       if (priceSlides[i]) preloadImg(`${IMAGE_PATH}${priceSlides[i]}`);
     }
-    // Preload next 4 testimonial photos
-    for (let i = 1; i <= 4; i++) {
-      if (testimonials[i]) preloadImg(`${IMAGE_PATH}${testimonials[i][0]}`);
+    // Preload the remaining lightweight testimonial portraits
+    for (let i = 1; i < testimonials.length; i++) {
+      preloadImg(`${IMAGE_PATH}${testimonials[i].image}`);
     }
   };
 

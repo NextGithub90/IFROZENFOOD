@@ -3,6 +3,10 @@
 # ====================================================================
 
 # 1. Enable GZIP / Deflate Compression
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/json image/svg+xml font/ttf font/woff font/woff2
+</IfModule>
+
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/plain
   AddOutputFilterByType DEFLATE text/html
@@ -28,10 +32,10 @@
   ExpiresByType text/html "access plus 0 seconds"
   ExpiresByType application/manifest+json "access plus 1 week"
 
-  # CSS & JavaScript
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType application/x-javascript "access plus 1 month"
+  # CSS & JavaScript use versioned URLs.
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
 
   # WebP & Images (1 Year Immutable)
   ExpiresByType image/webp "access plus 1 year"
@@ -59,7 +63,12 @@
 
   # CSS & JavaScript: Strong Cache with Stale Revalidation
   <FilesMatch "\.(css|js)$">
-    Header set Cache-Control "public, max-age=2592000, stale-while-revalidate=86400"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML must revalidate so versioned asset URLs update immediately.
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 
   # Service Worker: Do NOT aggressively cache sw.js

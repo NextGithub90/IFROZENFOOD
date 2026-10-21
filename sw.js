@@ -1,33 +1,22 @@
 /**
- * iFrozen Food Nusantara - Boost Cache Service Worker
- * Version: 1.0.0
- * Provides instant load times, stale-while-revalidate for assets,
- * cache-first for images/fonts, and seamless offline capability.
+ * iFrozen Food Nusantara - lightweight offline and runtime cache.
+ * The shell is pre-cached; larger below-the-fold images are cached on demand.
  */
 
-const CACHE_NAME = "ifrozen-boost-cache-v1";
+const CACHE_VERSION = "v2";
+const STATIC_CACHE = `ifrozen-static-${CACHE_VERSION}`;
+const RUNTIME_CACHE = `ifrozen-runtime-${CACHE_VERSION}`;
+const OWNED_CACHES = [STATIC_CACHE, RUNTIME_CACHE];
 
-const CORE_ASSETS = [
+const STATIC_ASSETS = [
   "./",
   "./index.html",
-  "./style.css",
-  "./script.js",
+  "./style.css?v=20261021-v2",
+  "./script.js?v=20261021-v2",
   "./site.webmanifest",
-  // Core Branding & Layout Images
   "./assets/images/01-s1600-logo-new.webp",
   "./assets/images/02-s1600-1.webp",
   "./assets/images/04-s1600-2.webp",
-  "./assets/images/06-s600-3.peluang.webp",
-  "./assets/images/08-s600-4.paket-bahan-baku.webp",
-  "./assets/images/09-s1600-seblak-1-2juta.webp",
-  "./assets/images/10-s1600-paket-1-2juta.webp",
-  "./assets/images/11-s1600-paket-2-3juta.webp",
-  "./assets/images/12-s1600-paket-3-5juta.webp",
-  "./assets/images/13-s1600-paket-6-5juta.webp",
-  "./assets/images/14-s1600-paket-10juta.webp",
-  "./assets/images/25-s1600-21.webp",
-  "./assets/images/56-s1600-22.webp",
-  // Icons
   "./assets/icons/chevron-left.svg",
   "./assets/icons/chevron-right.svg",
   "./assets/icons/clipboard-check.svg",
@@ -37,127 +26,77 @@ const CORE_ASSETS = [
   "./assets/icons/menu.svg",
   "./assets/icons/package.svg",
   "./assets/icons/whatsapp.svg",
-  // Fonts
-  "./assets/fonts/poppins-300.ttf",
   "./assets/fonts/poppins-400.ttf",
   "./assets/fonts/poppins-600.ttf",
   "./assets/fonts/poppins-700.ttf",
   "./assets/fonts/poppins-800.ttf",
 ];
 
-// Install: pre-cache core assets
+const cacheResponse = async (cacheName, request, response) => {
+  if (response && response.ok && response.type !== "opaque") {
+    const cache = await caches.open(cacheName);
+    await cache.put(request, response.clone());
+  }
+  return response;
+};
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches
-      .open(CACHE_NAME)
-      .then(async (cache) => {
-        // Cache assets individually to prevent a single failure from aborting install
-        await Promise.allSettled(
-          CORE_ASSETS.map(async (url) => {
-            try {
-              const res = await fetch(url, { cache: "reload" });
-              if (res.ok) await cache.put(url, res);
-            } catch (err) {
-              console.warn("[BoostCache] Failed to pre-cache:", url, err);
-            }
-          })
-        );
-      })
+    caches.open(STATIC_CACHE)
+      .then((cache) => Promise.allSettled(STATIC_ASSETS.map((asset) => cache.add(asset))))
       .then(() => self.skipWaiting())
   );
 });
 
-// Activate: clean up previous caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches
-      .keys()
-      .then((keys) =>
-        Promise.all(
-          keys.map((key) => {
-            if (key !== CACHE_NAME) {
-              return caches.delete(key);
-            }
-          })
-        )
-      )
-      .then(() => self.clients.claim())
+    Promise.all([
+      caches.keys().then((keys) => Promise.all(keys.map((key) => (
+        key.startsWith("ifrozen-") && !OWNED_CACHES.includes(key) ? caches.delete(key) : Promise.resolve()
+      )))),
+      self.registration.navigationPreload ? self.registration.navigationPreload.enable() : Promise.resolve(),
+    ]).then(() => self.clients.claim())
   );
 });
 
-// Fetch: Smart Caching Strategies
+self.addEventListener("message", (event) => {
+  if (event.data === "SKIP_WAITING") self.skipWaiting();
+});
+
 self.addEventListener("fetch", (event) => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // Ignore non-GET requests and external third parties like WhatsApp or Google Maps
-  if (request.method !== "GET" || url.origin !== self.location.origin) {
-    return;
-  }
+  if (request.method !== "GET" || url.origin !== self.location.origin) return;
 
-  // 1. Navigation / HTML: Network-first with cache fallback
   if (request.mode === "navigate") {
-    event.respondWith(
-      fetch(request)
-        .then((response) => {
-          if (response.ok) {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-          }
-          return response;
-        })
-        .catch(async () => {
-          const cached = await caches.match(request);
-          if (cached) return cached;
-          return caches.match("./index.html");
-        })
-    );
+    event.respondWith((async () => {
+      try {
+        const preload = await event.preloadResponse;
+        const networkResponse = preload || await fetch(request);
+        return cacheResponse(RUNTIME_CACHE, request, networkResponse);
+      } catch {
+        return (await caches.match(request)) || (await caches.match("./index.html"));
+      }
+    })());
     return;
   }
 
-  const pathname = url.pathname;
-
-  // 2. Images & Fonts: Cache-First strategy (Lightning fast delivery)
-  const isImageOrFont =
-    pathname.endsWith(".webp") ||
-    pathname.endsWith(".svg") ||
-    pathname.endsWith(".png") ||
-    pathname.endsWith(".jpg") ||
-    pathname.endsWith(".jpeg") ||
-    pathname.endsWith(".ttf") ||
-    pathname.endsWith(".woff") ||
-    pathname.endsWith(".woff2");
-
-  if (isImageOrFont) {
-    event.respondWith(
-      caches.match(request, { ignoreSearch: true }).then((cached) => {
-        if (cached) return cached;
-        return fetch(request).then((networkResponse) => {
-          if (networkResponse && networkResponse.ok) {
-            const clone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-          }
-          return networkResponse;
-        });
-      })
-    );
+  const isLongLivedAsset = /\.(?:webp|png|jpe?g|svg|ttf|woff2?)$/i.test(url.pathname);
+  if (isLongLivedAsset) {
+    event.respondWith((async () => {
+      const cached = await caches.match(request, { ignoreSearch: true });
+      if (cached) return cached;
+      return cacheResponse(RUNTIME_CACHE, request, await fetch(request));
+    })());
     return;
   }
 
-  // 3. CSS, JS & Other Static Assets: Stale-While-Revalidate
+  const network = fetch(request)
+    .then((response) => cacheResponse(RUNTIME_CACHE, request, response))
+    .catch(() => null);
+  event.waitUntil(network.then(() => undefined));
   event.respondWith(
-    caches.match(request).then((cached) => {
-      const fetchPromise = fetch(request)
-        .then((networkResponse) => {
-          if (networkResponse && networkResponse.ok) {
-            const clone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-          }
-          return networkResponse;
-        })
-        .catch(() => null);
-
-      return cached || fetchPromise;
-    })
+    caches.match(request).then((cached) => cached || network).then((response) => response || Response.error())
   );
 });
