@@ -1,7 +1,8 @@
 const IMAGE_PATH = "assets/images/";
 const ICON_PATH = "assets/icons/";
-const WHATSAPP_ADMIN = "628138378207";
-const WHATSAPP_CHANNEL = "https://whatsapp.com/channel/0029Vb8Xp0oJf05jGBBgmW1H";
+const WHATSAPP_ADMIN = "6285343728200";
+const CONTACT_EMAIL = "ifrozenfoodnusantara@gmail.com";
+const mobileViewport = window.matchMedia("(max-width: 767px)");
 
 const packages = [
   {
@@ -115,28 +116,22 @@ const terms = [
 
 const testimonials = [
   {
-    image: "testimonials/testimonial-maya-lestari.jpg",
-    label: "Mitra iFrozen - Bekasi",
-    quote: "Paketnya datang lengkap dan alurnya jelas. Saya bisa fokus melayani pelanggan, sementara tim iFrozen membantu saat waktunya restock dan mengembangkan penjualan.",
-    name: "Maya Lestari",
-    role: "Pemilik Frozen Berkah",
-    location: "Bekasi, Jawa Barat",
+    image: "testimonials/Foto_iFrozen_Food_Indonesia/01_toko_frozen_food.webp",
+    quote: "Paket promo isinya lengkap dan produknya selalu laris. Untungnya stabil, pelanggan pun puas!",
+    name: "Dimas Pratama",
+    packageName: "Mitra Paket Promo iFrozen",
   },
   {
-    image: "testimonials/testimonial-rizal-pratama.jpg",
-    label: "Mitra iFrozen - Tangerang",
-    quote: "Yang paling terasa adalah saya tidak memulai sendirian. Pilihan produknya mudah dijual, perlengkapan usaha sudah siap, dan konsultasi tetap tersedia setelah toko berjalan.",
-    name: "Rizal Pratama",
-    role: "Pemilik Dapur Beku Mandiri",
-    location: "Tangerang, Banten",
+    image: "testimonials/Foto_iFrozen_Food_Indonesia/02_pemilik_toko.webp",
+    quote: "Modal terjangkau, untungnya terasa! Freezer menjadi hak milik dan produk frozen food disukai pelanggan setiap hari. Terima kasih iFrozen.",
+    name: "Ibu Siti Rahma",
+    packageName: "Mitra Paket Supplier iFrozen",
   },
   {
-    image: "testimonials/testimonial-nadia-rahma.jpg",
-    label: "Mitra iFrozen - Bandung",
-    quote: "Dari paket awal sampai toko siap buka, prosesnya terasa praktis. Katalog produknya beragam sehingga saya lebih mudah menyesuaikan stok dengan kebutuhan pelanggan sekitar.",
-    name: "Nadia Rahma",
-    role: "Pemilik Rumah Frozen Nadia",
-    location: "Bandung, Jawa Barat",
+    image: "testimonials/Foto_iFrozen_Food_Indonesia/03_mitra_motor.webp",
+    quote: "Alhamdulillah, jualan jadi lebih mudah dan praktis untuk berkeliling. Pembeli senang, omzet naik setiap hari!",
+    name: "Mas Arif Setiawan",
+    packageName: "Mitra Usaha Keliling iFrozen",
   },
 ];
 
@@ -177,9 +172,6 @@ app.innerHTML = `
         <button type="button" data-scroll="terms">Syarat</button>
         <button type="button" data-scroll="register">Daftar</button>
         <button type="button" data-scroll="feedback">Saran & Pengaduan</button>
-        <a class="channel-link" href="${WHATSAPP_CHANNEL}" target="_blank" rel="noreferrer">
-          <span class="live-dot"></span> Saluran WA
-        </a>
       </div>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-sidebar" aria-label="Buka menu navigasi">
         <img src="${ICON_PATH}menu.svg" alt="" />
@@ -208,7 +200,6 @@ app.innerHTML = `
         <button type="button" data-scroll="register"><span>05</span><b>Formulir Daftar</b><small>Mulai kemitraan</small></button>
         <button type="button" data-scroll="feedback"><span>06</span><b>Saran & Pengaduan</b><small>Hubungi layanan mitra</small></button>
       </div>
-      <a class="sidebar-channel" href="${WHATSAPP_CHANNEL}" target="_blank" rel="noreferrer"><span class="live-dot"></span> Gabung Saluran WhatsApp Resmi ↗</a>
     </aside>
   </div>
 
@@ -431,7 +422,7 @@ app.innerHTML = `
     <div class="container footer-grid">
       <div><div class="footer-brand"><img src="${IMAGE_PATH}01-s1600-logo-new.webp" alt="Logo iFrozen Food Nusantara" /><strong>iFrozen Food Nusantara</strong></div><p>Mitra resmi pemerintah dalam memajukan UMKM Indonesia melalui sektor Frozen Food. Terpercaya, Lengkap, dan Terjangkau.</p><div class="legal"><b>Legalitas</b><span>Terverifikasi oleh Kementerian UMKM dan didukung oleh sistem perbankan nasional.</span></div></div>
       <div><h4>Alamat Resmi</h4><div class="address"><b>Alamat Administrasi</b><p>SCBD, Gedung Treasury Tower, Kawasan District 8 LOT 28, Jl. Tulodong Atas 2 No.28, RT.5/RW.3, Senayan, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12190</p><b>Alamat Gudang Pusat</b><p>Jl. Raya St. Cakung No.20, RT.10/RW.3, Pulo Gebang, Kec. Cakung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13950</p></div></div>
-      <div><h4>Hubungi Kami</h4><ul class="contact-list"><li>📱 <span><b>WhatsApp Admin</b><a href="https://wa.me/${WHATSAPP_ADMIN}" target="_blank" rel="noreferrer">0813-8378-207</a></span></li><li>📢 <span><b>Saluran WhatsApp Resmi</b><a href="${WHATSAPP_CHANNEL}" target="_blank" rel="noreferrer">Gabung Saluran iFrozen ↗</a></span></li><li>📧 <span><b>Email</b><em>kemitraan@ifrozenfood.com</em></span></li><li>💬 <span><a class="feedback-link" href="#feedback">Form Saran & Pengaduan</a></span></li></ul><h5>Ikuti Kami</h5><div class="socials"><a href="${WHATSAPP_CHANNEL}" target="_blank" rel="noreferrer">◉ Saluran WhatsApp</a><a href="https://www.facebook.com/share/19QXnBmoU5/" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.tiktok.com/@pusatbisnisifrozenfood?_r=1&_t=ZS-99E9Fa6858m" target="_blank" rel="noreferrer">TikTok</a><a href="https://www.instagram.com/ifrozenfoodindo?igsi=eGo0M2I3YTdkbWpi" target="_blank" rel="noreferrer">Instagram</a></div></div>
+      <div><h4>Hubungi Kami</h4><ul class="contact-list"><li>📱 <span><b>WhatsApp Admin</b><a href="https://wa.me/${WHATSAPP_ADMIN}" target="_blank" rel="noreferrer">0853-4372-8200</a></span></li><li>📧 <span><b>Email</b><a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></span></li><li>💬 <span><a class="feedback-link" href="#feedback">Form Saran & Pengaduan</a></span></li></ul><h5>Ikuti Kami</h5><div class="socials"><a href="https://www.facebook.com/share/19QXnBmoU5/" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.tiktok.com/@pusatbisnisifrozenfood?_r=1&_t=ZS-99E9Fa6858m" target="_blank" rel="noreferrer">TikTok</a><a href="https://www.instagram.com/ifrozenfoodindo?igsi=eGo0M2I3YTdkbWpi" target="_blank" rel="noreferrer">Instagram</a></div></div>
     </div>
     <p class="copyright">© 2026 iFrozen Food Nusantara. Hak Cipta Dilindungi Undang-Undang.</p>
   </footer>
@@ -558,6 +549,7 @@ if ("IntersectionObserver" in window) {
 
 let navbarFrame = 0;
 let navbarScrolled = false;
+let mobileScrollTimer = 0;
 const updateNavbar = () => {
   navbarFrame = 0;
   const shouldBeScrolled = window.scrollY > 50;
@@ -567,6 +559,10 @@ const updateNavbar = () => {
 };
 const queueNavbarUpdate = () => {
   if (!navbarFrame) navbarFrame = window.requestAnimationFrame(updateNavbar);
+  if (!mobileViewport.matches) return;
+  if (!document.body.classList.contains("is-scrolling")) document.body.classList.add("is-scrolling");
+  window.clearTimeout(mobileScrollTimer);
+  mobileScrollTimer = window.setTimeout(() => document.body.classList.remove("is-scrolling"), 140);
 };
 window.addEventListener("scroll", queueNavbarUpdate, { passive: true });
 updateNavbar();
@@ -653,13 +649,17 @@ const testimonialCount = document.querySelector("#testimonial-count");
 testimonialTrack.innerHTML = testimonials.map((item, index) => `
   <article class="story-slide" role="group" aria-roledescription="slide" aria-label="${index + 1} dari ${testimonials.length}" aria-hidden="${index === 0 ? "false" : "true"}">
     <figure class="story-portrait">
-      <img src="${IMAGE_PATH}${item.image}" alt="Portrait ilustrasi ${item.name}" loading="lazy" decoding="async" />
-      <figcaption>Foto ilustrasi</figcaption>
+      <img src="${IMAGE_PATH}${item.image}" alt="Foto testimoni ${item.name}" width="1122" height="1402" loading="lazy" decoding="async" />
     </figure>
     <div class="story-copy">
-      <span class="story-label">${item.label}</span>
+      <div class="story-rating" aria-label="5 dari 5 bintang">
+        ${Array.from({ length: 5 }, () => `<img src="${ICON_PATH}star-solid.svg" alt="" />`).join("")}
+      </div>
+      <div class="story-person">
+        <strong>${item.name}</strong>
+        <span class="story-package"><img src="${ICON_PATH}package.svg" alt="" />${item.packageName}</span>
+      </div>
       <blockquote>“${item.quote}”</blockquote>
-      <div class="story-person"><strong>${item.name}</strong><span>${item.role}</span><small>${item.location}</small></div>
     </div>
   </article>
 `).join("");
@@ -766,10 +766,11 @@ const hideProof = () => {
     proofTimer = window.setTimeout(hideProof, 5500);
   }, 5000);
 };
+const proofInitialDelay = mobileViewport.matches ? 8000 : 2500;
 window.setTimeout(() => {
   proof.classList.add("show");
   proofTimer = window.setTimeout(hideProof, 5500);
-}, 2500);
+}, proofInitialDelay);
 
 const proofDetailModal = document.querySelector("#proof-detail-modal");
 const openProofDetail = () => {
@@ -829,25 +830,7 @@ document.addEventListener("keydown", (event) => {
     button.addEventListener("touchstart", warmFlyer, { once: true, passive: true });
   });
 
-  // 2. Pre-cache adjacent carousel slides during idle time
-  const idleWarm = () => {
-    // Preload next 4 price list sheets
-    for (let i = 1; i <= 4; i++) {
-      if (priceSlides[i]) preloadImg(`${IMAGE_PATH}${priceSlides[i]}`);
-    }
-    // Preload the remaining lightweight testimonial portraits
-    for (let i = 1; i < testimonials.length; i++) {
-      preloadImg(`${IMAGE_PATH}${testimonials[i].image}`);
-    }
-  };
-
-  if ("requestIdleCallback" in window) {
-    window.requestIdleCallback(idleWarm, { timeout: 2500 });
-  } else {
-    setTimeout(idleWarm, 1500);
-  }
-
-  // 3. Register Service Worker for Cache-First Boost & Offline Capability
+  // 2. Register the service worker after the first page load.
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker

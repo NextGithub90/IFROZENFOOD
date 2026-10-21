@@ -3,7 +3,7 @@
  * The shell is pre-cached; larger below-the-fold images are cached on demand.
  */
 
-const CACHE_VERSION = "v2";
+const CACHE_VERSION = "v4";
 const STATIC_CACHE = `ifrozen-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `ifrozen-runtime-${CACHE_VERSION}`;
 const OWNED_CACHES = [STATIC_CACHE, RUNTIME_CACHE];
@@ -11,25 +11,10 @@ const OWNED_CACHES = [STATIC_CACHE, RUNTIME_CACHE];
 const STATIC_ASSETS = [
   "./",
   "./index.html",
-  "./style.css?v=20261021-v2",
-  "./script.js?v=20261021-v2",
+  "./style.css?v=20261021-v4",
+  "./script.js?v=20261021-v4",
   "./site.webmanifest",
   "./assets/images/01-s1600-logo-new.webp",
-  "./assets/images/02-s1600-1.webp",
-  "./assets/images/04-s1600-2.webp",
-  "./assets/icons/chevron-left.svg",
-  "./assets/icons/chevron-right.svg",
-  "./assets/icons/clipboard-check.svg",
-  "./assets/icons/close.svg",
-  "./assets/icons/file-check-2.svg",
-  "./assets/icons/house.svg",
-  "./assets/icons/menu.svg",
-  "./assets/icons/package.svg",
-  "./assets/icons/whatsapp.svg",
-  "./assets/fonts/poppins-400.ttf",
-  "./assets/fonts/poppins-600.ttf",
-  "./assets/fonts/poppins-700.ttf",
-  "./assets/fonts/poppins-800.ttf",
 ];
 
 const cacheResponse = async (cacheName, request, response) => {
