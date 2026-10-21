@@ -3,7 +3,7 @@
  * The shell is pre-cached; larger below-the-fold images are cached on demand.
  */
 
-const CACHE_VERSION = "v4";
+const CACHE_VERSION = "v5";
 const STATIC_CACHE = `ifrozen-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `ifrozen-runtime-${CACHE_VERSION}`;
 const OWNED_CACHES = [STATIC_CACHE, RUNTIME_CACHE];
@@ -11,8 +11,8 @@ const OWNED_CACHES = [STATIC_CACHE, RUNTIME_CACHE];
 const STATIC_ASSETS = [
   "./",
   "./index.html",
-  "./style.css?v=20261021-v4",
-  "./script.js?v=20261021-v4",
+  "./style.css?v=20261021-v5",
+  "./script.js?v=20261021-v5",
   "./site.webmanifest",
   "./assets/images/01-s1600-logo-new.webp",
 ];

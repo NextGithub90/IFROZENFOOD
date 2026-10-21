@@ -133,6 +133,24 @@ const testimonials = [
     name: "Mas Arif Setiawan",
     packageName: "Mitra Usaha Keliling iFrozen",
   },
+  {
+    image: "testimonials/Foto_iFrozen_Food_Indonesia/kios_frozen_food_indonesia_hijau_ceria.webp",
+    quote: "Kios saya sekarang terlihat lebih profesional dan lengkap. Pelanggan makin percaya, produk juga lebih cepat terjual.",
+    name: "Ibu Nur Aisyah",
+    packageName: "Mitra Kios iFrozen",
+  },
+  {
+    image: "testimonials/Foto_iFrozen_Food_Indonesia/toko_frozen_food_ifrozen_indonesia.webp",
+    quote: "Stok produk lengkap dan freezer sudah siap digunakan. Saya bisa langsung fokus berjualan dan melayani pelanggan.",
+    name: "Raka Mahendra",
+    packageName: "Mitra Paket Komplit iFrozen",
+  },
+  {
+    image: "testimonials/Foto_iFrozen_Food_Indonesia/toko_frozen_food_ifrozen_yang_ramah.webp",
+    quote: "Kami bisa membangun usaha frozen food bersama dari rumah. Dukungan perlengkapannya membuat semuanya lebih mudah dijalankan.",
+    name: "Andi & Rina",
+    packageName: "Mitra Toko Keluarga iFrozen",
+  },
 ];
 
 const notifications = [
@@ -279,7 +297,10 @@ app.innerHTML = `
           <h2>Investasi Sekali, Untung Berkali-kali</h2>
           <p>Semua paket sudah termasuk peralatan usaha lengkap dan produk siap jualan langsung dari pabrik. Barang menjadi hak milik mitra 100%.<br /><b>Klik pada gambar brosur untuk memperbesar detail flyer.</b></p>
         </header>
-        <div class="package-grid" id="package-grid"></div>
+        <div class="package-slider-shell">
+          <div class="package-grid" id="package-grid"></div>
+          <div class="package-swipe-hint" id="package-scroll-hint" aria-hidden="true"><span>Geser paket</span><img src="${ICON_PATH}chevron-right.svg" alt="" /></div>
+        </div>
       </div>
     </section>
 
@@ -293,7 +314,7 @@ app.innerHTML = `
         <div class="glass-card table-card">
           <div class="table-scroll-shell">
             <div class="table-scroll" id="price-table-scroll" tabindex="0" aria-label="Tabel harga dapat digeser ke samping"><table><thead><tr><th>Brand</th><th>Nama Produk</th><th>Harga Grosir (Modal)</th><th>Harga Eceran (Jual)</th><th>Profit/Pcs</th></tr></thead><tbody id="price-body"></tbody></table></div>
-            <div class="table-swipe-hint" id="price-scroll-hint" aria-hidden="true"><span>Geser untuk lihat harga</span><img src="${ICON_PATH}chevron-right.svg" alt="" /></div>
+            <div class="table-swipe-hint" id="price-scroll-hint" aria-hidden="true"><span>Geser</span><img src="${ICON_PATH}chevron-right.svg" alt="" /></div>
           </div>
           <p class="table-note">*Harga pada tabel adalah simulasi. Harga real mengikuti update pricelist pabrik terbaru di bawah ini.</p>
         </div>
@@ -327,7 +348,7 @@ app.innerHTML = `
           </div>
           <button class="story-arrow story-prev" type="button" data-testimonial-dir="-1" aria-label="Lihat testimoni sebelumnya"><img src="${ICON_PATH}chevron-left.svg" alt="" /></button>
           <button class="story-arrow story-next" type="button" data-testimonial-dir="1" aria-label="Lihat testimoni berikutnya"><img src="${ICON_PATH}chevron-right.svg" alt="" /></button>
-          <div class="story-controls"><div class="carousel-dots" id="testimonial-dots"></div><span id="testimonial-count">01 / 03</span></div>
+          <div class="story-controls"><div class="carousel-dots" id="testimonial-dots"></div><span id="testimonial-count">01 / 06</span></div>
         </div>
       </div>
     </section>
@@ -574,6 +595,13 @@ priceTableScroll.addEventListener("scroll", () => {
   if (priceTableScroll.scrollLeft > 12) hidePriceScrollHint();
 }, { passive: true });
 priceTableScroll.addEventListener("pointerdown", hidePriceScrollHint, { once: true, passive: true });
+
+const packageGrid = document.querySelector("#package-grid");
+const packageScrollHint = document.querySelector("#package-scroll-hint");
+const hidePackageScrollHint = () => packageScrollHint.classList.add("is-hidden");
+packageGrid.addEventListener("scroll", () => {
+  if (packageGrid.scrollLeft > 12) hidePackageScrollHint();
+}, { passive: true });
 
 const flyerModal = document.querySelector("#flyer-modal");
 let activePackage = null;
