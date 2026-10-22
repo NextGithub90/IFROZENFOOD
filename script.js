@@ -318,7 +318,7 @@ app.innerHTML = `
           </div>
           <p class="table-note">*Harga pada tabel adalah simulasi. Harga real mengikuti update pricelist pabrik terbaru di bawah ini.</p>
         </div>
-        <header class="subheading"><h3>Katalog Pricelist Resmi</h3><p>Geser untuk melihat brand lain. Klik gambar untuk Zoom.</p></header>
+        <header class="subheading"><h3>Katalog Pricelist Resmi</h3><p><span class="swipe-copy">Geser untuk melihat brand lain. </span>Klik gambar untuk Zoom.</p></header>
         <div class="carousel price-carousel" data-carousel="price">
           <div class="glass-card carousel-card portrait-card">
             <a id="price-zoom" target="_blank" rel="noreferrer"><img id="price-image" alt="Halaman 1" loading="lazy" decoding="async" /></a>
